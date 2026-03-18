@@ -9,12 +9,13 @@ import { usePlotStore } from '@/stores/usePlotStore';
 import { useEntryStore } from '@/stores/useEntryStore';
 import { useZoneStore } from '@/stores/useZoneStore';
 import { getGrowthStage, GROWTH_LABELS } from '@/lib/types';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function PlotDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const plot = usePlotStore((s) => s.plots.find((p) => p.id === id));
-  const entries = useEntryStore((s) => s.entries.filter((e) => e.plot_id === id));
+  const entries = useEntryStore(useShallow((s) => s.entries.filter((e) => e.plot_id === id)));
   const zones = useZoneStore((s) => s.zones);
   const deletePlot = usePlotStore((s) => s.deletePlot);
 
