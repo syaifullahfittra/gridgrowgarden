@@ -9,6 +9,7 @@ import { usePlotStore } from '@/stores/usePlotStore';
 import { useEntryStore } from '@/stores/useEntryStore';
 import { useZoneStore } from '@/stores/useZoneStore';
 import { getGrowthStage, GROWTH_LABELS } from '@/lib/types';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function PlotDetail() {
   const { id } = useParams<{ id: string }>();
