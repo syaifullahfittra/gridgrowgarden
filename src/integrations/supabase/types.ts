@@ -14,7 +14,169 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      entries: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          intensity: number | null
+          is_backdated: boolean
+          note: string | null
+          plot_id: string
+          user_id: string
+          value: number
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          id?: string
+          intensity?: number | null
+          is_backdated?: boolean
+          note?: string | null
+          plot_id: string
+          user_id: string
+          value?: number
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          intensity?: number | null
+          is_backdated?: boolean
+          note?: string | null
+          plot_id?: string
+          user_id?: string
+          value?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "entries_plot_id_fkey"
+            columns: ["plot_id"]
+            isOneToOne: false
+            referencedRelation: "plots"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      plots: {
+        Row: {
+          color_theme: string
+          created_at: string
+          description: string | null
+          entry_type: string
+          frequency: string
+          icon: string
+          id: string
+          is_archived: boolean
+          is_shareable: boolean
+          name: string
+          start_date: string
+          target_per_period: number | null
+          unit: string | null
+          updated_at: string
+          user_id: string
+          zone_id: string | null
+        }
+        Insert: {
+          color_theme?: string
+          created_at?: string
+          description?: string | null
+          entry_type?: string
+          frequency?: string
+          icon?: string
+          id?: string
+          is_archived?: boolean
+          is_shareable?: boolean
+          name: string
+          start_date?: string
+          target_per_period?: number | null
+          unit?: string | null
+          updated_at?: string
+          user_id: string
+          zone_id?: string | null
+        }
+        Update: {
+          color_theme?: string
+          created_at?: string
+          description?: string | null
+          entry_type?: string
+          frequency?: string
+          icon?: string
+          id?: string
+          is_archived?: boolean
+          is_shareable?: boolean
+          name?: string
+          start_date?: string
+          target_per_period?: number | null
+          unit?: string | null
+          updated_at?: string
+          user_id?: string
+          zone_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plots_zone_id_fkey"
+            columns: ["zone_id"]
+            isOneToOne: false
+            referencedRelation: "zones"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_settings: {
+        Row: {
+          compact_view: boolean
+          created_at: string
+          garden_name: string
+          id: string
+          updated_at: string
+          user_id: string
+          week_start: string
+        }
+        Insert: {
+          compact_view?: boolean
+          created_at?: string
+          garden_name?: string
+          id?: string
+          updated_at?: string
+          user_id: string
+          week_start?: string
+        }
+        Update: {
+          compact_view?: boolean
+          created_at?: string
+          garden_name?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+          week_start?: string
+        }
+        Relationships: []
+      }
+      zones: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          sort_order: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          sort_order?: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          sort_order?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
