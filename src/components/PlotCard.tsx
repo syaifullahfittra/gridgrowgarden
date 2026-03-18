@@ -5,6 +5,7 @@ import { MosaicGrid } from './MosaicGrid';
 import { useEntryStore } from '@/stores/useEntryStore';
 import { getGrowthStage, GROWTH_LABELS } from '@/lib/types';
 import type { Plot } from '@/lib/types';
+import { useShallow } from 'zustand/react/shallow';
 
 interface PlotCardProps {
   plot: Plot;
