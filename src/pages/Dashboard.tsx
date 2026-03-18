@@ -7,6 +7,7 @@ import { usePlotStore } from '@/stores/usePlotStore';
 import { useZoneStore } from '@/stores/useZoneStore';
 import { useSettingsStore } from '@/stores/useSettingsStore';
 import { Button } from '@/components/ui/button';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function Dashboard() {
   const plots = usePlotStore((s) => s.plots.filter((p) => !p.is_archived));
