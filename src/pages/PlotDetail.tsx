@@ -15,7 +15,7 @@ export default function PlotDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const plot = usePlotStore((s) => s.plots.find((p) => p.id === id));
-  const entries = useEntryStore((s) => s.entries.filter((e) => e.plot_id === id));
+  const entries = useEntryStore(useShallow((s) => s.entries.filter((e) => e.plot_id === id)));
   const zones = useZoneStore((s) => s.zones);
   const deletePlot = usePlotStore((s) => s.deletePlot);
 

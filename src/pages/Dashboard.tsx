@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { useShallow } from 'zustand/react/shallow';
 
 export default function Dashboard() {
-  const plots = usePlotStore((s) => s.plots.filter((p) => !p.is_archived));
+  const plots = usePlotStore(useShallow((s) => s.plots.filter((p) => !p.is_archived)));
   const zones = useZoneStore((s) => s.zones);
   const { gardenName, compactView, toggleCompactView } = useSettingsStore();
 

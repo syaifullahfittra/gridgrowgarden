@@ -15,7 +15,7 @@ interface PlotCardProps {
 
 export function PlotCard({ plot, compact = false, index = 0 }: PlotCardProps) {
   const navigate = useNavigate();
-  const entries = useEntryStore((s) => s.entries.filter((e) => e.plot_id === plot.id));
+  const entries = useEntryStore(useShallow((s) => s.entries.filter((e) => e.plot_id === plot.id)));
   const addEntry = useEntryStore((s) => s.addEntry);
 
   const stage = useMemo(() => getGrowthStage(entries.length), [entries.length]);
